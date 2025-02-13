@@ -79,7 +79,7 @@ kernel_selector () {
 }
 
 
-de () {
+de_selector () {
 	info_print "List of env:"
 	info_print "1) Plasma [Minimal]"
 	info_print "2) xfce"
@@ -306,7 +306,7 @@ until hostname_selector; do : ; done
 # User sets up the user/root passwords.
 until userpass_selector; do : ; done
 until rootpass_selector; do : ; done
-until de; do : ; done
+until de_selector; do : ; done
 
 # Warn user about deletion of old partition scheme.
 input_print "This will delete the current partition table on $DISK once installation starts. Do you agree [y/N]?: "
