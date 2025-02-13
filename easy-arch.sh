@@ -306,6 +306,7 @@ until hostname_selector; do : ; done
 # User sets up the user/root passwords.
 until userpass_selector; do : ; done
 until rootpass_selector; do : ; done
+until de; do : ; done
 
 # Warn user about deletion of old partition scheme.
 input_print "This will delete the current partition table on $DISK once installation starts. Do you agree [y/N]?: "
@@ -375,7 +376,7 @@ microcode_detector
 
 # Pacstrap (setting up a base sytem onto the new root).
 info_print "Installing the base system with plasma[minimal] (it may take a while)."
-pacstrap -K /mnt base base-devel "$kernel" "$microcode" linux-firmware "$kernel"-headers btrfs-progs grub grub-btrfs rsync efibootmgr snapper reflector snap-pac zram-generator pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber zsh git plasma-desktop plasma-nm plasma-pa dolphin alacritty kscreen sddm&>/dev/null
+pacstrap -K /mnt base base-devel "$kernel" "$microcode" linux-firmware "$kernel"-headers "$h" btrfs-progs grub grub-btrfs rsync efibootmgr snapper reflector snap-pac zram-generator pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber zsh git&>/dev/null
 
 # Setting up the hostname.
 echo "$hostname" > /mnt/etc/hostname
