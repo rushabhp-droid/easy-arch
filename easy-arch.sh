@@ -78,6 +78,22 @@ kernel_selector () {
     esac
 }
 
+
+de () {
+	info_print "List of env:"
+	info_print "1) Plasma [Minimal]"
+	info_print "2) xfce"
+	read -r de_choice
+	case $de_choice in
+		1 ) h="plasma-desktop plasma-nm plasma-pa dolphin alacritty kscreen sddm"
+			return 0;;
+		2 ) h="xfce4 xfce4-goodies"
+			return 0;;
+		* ) error_print "You did not enter a valid selection, please try again." 
+	esac
+
+}
+
 # Selecting a way to handle internet connection (function).
 network_selector () {
     info_print "Network utilities:"
@@ -358,8 +374,8 @@ mount "$ESP" /mnt/boot/
 microcode_detector
 
 # Pacstrap (setting up a base sytem onto the new root).
-info_print "Installing the base system (it may take a while)."
-pacstrap -K /mnt base base-devel "$kernel" "$microcode" linux-firmware "$kernel"-headers btrfs-progs grub grub-btrfs rsync efibootmgr snapper reflector snap-pac zram-generator pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber zsh git plasma-desktop plasma-nm plasma-pa dolphin alacritty sddm&>/dev/null
+info_print "Installing the base system with plasma[minimal] (it may take a while)."
+pacstrap -K /mnt base base-devel "$kernel" "$microcode" linux-firmware "$kernel"-headers btrfs-progs grub grub-btrfs rsync efibootmgr snapper reflector snap-pac zram-generator pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber zsh git plasma-desktop plasma-nm plasma-pa dolphin alacritty kscreen sddm&>/dev/null
 
 # Setting up the hostname.
 echo "$hostname" > /mnt/etc/hostname
