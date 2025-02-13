@@ -375,7 +375,7 @@ mount "$ESP" /mnt/boot/
 microcode_detector
 
 # Pacstrap (setting up a base sytem onto the new root).
-info_print "Installing the base system with plasma[minimal] (it may take a while)."
+info_print "Installing the base system with minimal DE (it may take a while)."
 pacstrap -K /mnt base base-devel "$kernel" "$microcode" linux-firmware "$kernel"-headers "$h" btrfs-progs grub grub-btrfs rsync efibootmgr snapper reflector snap-pac zram-generator pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber zsh git&>/dev/null
 
 # Setting up the hostname.
